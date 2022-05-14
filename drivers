@@ -1,0 +1,15 @@
+void Button_vinit (unsigned char port, unsigned char pin)
+{
+  DIO_vpin_dir(port, pin); //*to be changed when fn name is set*
+}
+
+unsigned char Button_u8read (unsigned char port, unsigned char pin)
+{
+	return DIO_u8READ_PIN(port, pin);
+}
+
+void Button_vinitPullUp (unsigned char port, unsigned char pin)
+{
+	DIO_vpin_dir(port, pin); 
+	DIO_enablePullUp(port, pin);
+}
