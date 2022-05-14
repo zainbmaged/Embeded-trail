@@ -1,3 +1,5 @@
+
+// intialize UART Protocol
 void UART_init (unsigned char num)
 {
 	switch(num) 
@@ -66,7 +68,7 @@ void UART_init (unsigned char num)
 	}
 }
 
-
+// check fifo availability for read or write 
 unsigned char UART_fifo_check (unsigned char num)
 {
 	switch(num) 
@@ -104,6 +106,8 @@ unsigned char UART_fifo_check (unsigned char num)
 	}
 }
 
+
+// Read Data from UART(num) port 
 char UART_read (unsigned char num)
 {
 	switch(num) 
@@ -147,7 +151,7 @@ char UART_read (unsigned char num)
 	}
 }
 
-
+// write data in UART(num) port
 void UART_write (unsigned char num, unsigned char data)
 {
 	switch(num) 
@@ -191,6 +195,8 @@ void UART_write (unsigned char num, unsigned char data)
 	}
 }
 
+
+//recieve data and write(echo) it in UART(num) port 
 void getCommand(char *str, uint8_t maxLen, unsigned char num ){
  		char c;
 		int8_t i;
@@ -205,6 +211,7 @@ void getCommand(char *str, uint8_t maxLen, unsigned char num ){
     		UART_write(c, num);
 		}
 
+//function that prints any onscreen message
 void printstr(char *str, unsigned char num)
 		{
   		while(*str){
