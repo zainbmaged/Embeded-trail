@@ -9,16 +9,15 @@
 
 
 
-
 enum dir {input, output}; //input=0, output=1
 
-//port initialization
+//port initialization function
 void port_init (unsigned char port)
 {
 	switch(port) 
 	{
-		case "A":
-		case "a":
+		case 'A':
+		case 'a':
 		SET_BIT(SYSCTL_RCGCGPIO_R,0);
 		while (READ_BIT(SYSCTL_PRGPIO_R,0) == 0);
 		GPIO_PORTA_LOCK_R = 0x4C4F434B;
@@ -26,8 +25,8 @@ void port_init (unsigned char port)
 		GPIO_PORTA_DEN_R = 0xFF;
 		break;
 		
-		case "B":
-		case "b":
+		case 'B':
+		case 'b':
 		SET_BIT(SYSCTL_RCGCGPIO_R,1);
 		while (READ_BIT(SYSCTL_PRGPIO_R,1) == 0);
 		GPIO_PORTB_LOCK_R = 0x4C4F434B;
@@ -35,17 +34,15 @@ void port_init (unsigned char port)
 		GPIO_PORTB_DEN_R = 0xFF;
 		break;
 		
-		case "C":
-		case "c":
+		case 'C':
+		case 'c':
 		SET_BIT(SYSCTL_RCGCGPIO_R,2);
 		while (READ_BIT(SYSCTL_PRGPIO_R,2) == 0);
-		GPIO_PORTC_LOCK_R = 0x4C4F434B;
-		GPIO_PORTC_CR_R |= 0xFF;
 		GPIO_PORTC_DEN_R = 0xFF;
 		break;
 		
-		case "D":
-		case "d":
+		case 'D':
+		case 'd':
 		SET_BIT(SYSCTL_RCGCGPIO_R,3);
 		while (READ_BIT(SYSCTL_PRGPIO_R,3) == 0);
 		GPIO_PORTD_LOCK_R = 0x4C4F434B;
@@ -53,8 +50,8 @@ void port_init (unsigned char port)
 		GPIO_PORTD_DEN_R = 0xFF;
 		break;
 		
-		case "E":
-		case "e":
+		case 'E':
+		case 'e':
 		SET_BIT(SYSCTL_RCGCGPIO_R,4);
 		while (READ_BIT(SYSCTL_PRGPIO_R,4) == 0);
 		GPIO_PORTE_LOCK_R = 0x4C4F434B;
@@ -62,8 +59,8 @@ void port_init (unsigned char port)
 		GPIO_PORTE_DEN_R = 0xFF;
 		break;
 		
-		case "F":
-		case "f":
+		case 'F':
+		case 'f':
 		SET_BIT(SYSCTL_RCGCGPIO_R,5);
 		while (READ_BIT(SYSCTL_PRGPIO_R,5) == 0);
 		GPIO_PORTF_LOCK_R = 0x4C4F434B;
@@ -71,82 +68,81 @@ void port_init (unsigned char port)
 		GPIO_PORTF_DEN_R = 0xFF;
 		break;
 	}
-	
-//set port direction	
-void DIO_vport_dir (unsigned char port, unsigned char pin, unsigned char dir)
-{
+}
+// set port direction function
+void DIO_vport_dir (unsigned char port, unsigned char pin, unsigned char dir){
 	switch (port)
-	{
-		case "A":
-		case "a":
-			if (dir == input) //dir=0
-			{
-				CLR_BIT(GPIO_PORTA_DIR_R, pin)
-			}
-			if (dir == output) //dir=1
-			{
-				SET_BIT(GPIO_PORTA_DIR_R, pin)
-			}
-		break:
-		case "B":
-		case "b":
-			if (dir == input) //dir=0
-			{
-				CLR_BIT(GPIO_PORTB_DIR_R, pin)
-			}
-			if (dir == output) //dir=1
-			{
-				SET_BIT(GPIO_PORTB_DIR_R, pin)
-			}
-			break:
-		case "C":
-		case "c":
-			if (dir == input) //dir=0
-			{
-				CLR_BIT(GPIO_PORTC_DIR_R, pin)
-			}
-			if (dir == output) //dir=1
-			{
-				SET_BIT(GPIO_PORTC_DIR_R, pin)
-			}
-			break:
-		case "D":
-		case "d":
-			if (dir == input) //dir=0
-			{
-				CLR_BIT(GPIO_PORTD_DIR_R, pin)
-			}
-			if (dir == output) //dir=1
-			{
-				SET_BIT(GPIO_PORTD_DIR_R, pin)
-			}
-			break:
-		case "E":
-		case "e":
-			if (dir == input) //dir=0
-			{
-				CLR_BIT(GPIO_PORTE_DIR_R, pin)
-			}
-			if (dir == output) //dir=1
-			{
-				SET_BIT(GPIO_PORTE_DIR_R, pin)
-			}
-			break:
-		case "F":
-		case "f":
-			if (dir == input) //dir=0
-			{
-				CLR_BIT(GPIO_PORTF_DIR_R, pin)
-			}
-			if (dir == output) //dir=1
-			{
-				SET_BIT(GPIO_PORTF_DIR_R, pin)
-			}
-			break:
-								
+		{
+			case 'A':
+			case 'a':
+				if (dir == input)
+				{
+					CLR_BIT(GPIO_PORTA_DIR_R, pin);
+				}
+				if (dir == output)
+				{
+					SET_BIT(GPIO_PORTA_DIR_R, pin);
+				}
+				break;
+			case 'B':
+			case 'b':
+				if (dir == input)
+				{
+					CLR_BIT(GPIO_PORTB_DIR_R, pin);
+				}
+				if (dir == output)
+				{
+					SET_BIT(GPIO_PORTB_DIR_R, pin);
+				}
+				break;
+			case 'C':
+			case 'c':
+				if (dir == input)
+				{
+					CLR_BIT(GPIO_PORTC_DIR_R, pin);
+				}
+				if (dir == output)
+				{
+					SET_BIT(GPIO_PORTC_DIR_R, pin);
+				}
+				break;
+			case 'D':
+			case 'd':
+				if (dir == input)
+				{
+					CLR_BIT(GPIO_PORTD_DIR_R, pin);
+				}
+				if (dir == output)
+				{
+					SET_BIT(GPIO_PORTD_DIR_R, pin);
+				}
+				break;
+			case 'E':
+			case 'e':
+				if (dir == input)
+				{
+					CLR_BIT(GPIO_PORTE_DIR_R, pin);
+				}
+				if (dir == output)
+				{
+					SET_BIT(GPIO_PORTE_DIR_R, pin);
+				}
+				break;
+			case 'F':
+			case 'f':
+				if (dir == input)
+				{
+					CLR_BIT(GPIO_PORTF_DIR_R, pin);
+				}
+				if (dir == output)
+				{
+					SET_BIT(GPIO_PORTF_DIR_R, pin);
+				}
+				break;
+						
 		}
 	}
-}
+
 
 
 
