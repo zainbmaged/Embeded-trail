@@ -1,0 +1,196 @@
+# Embeded-trail
+# define io . h 
+
+
+
+void DIO.setPortDir( unsigned char portName, unsigned char direction )
+{
+	switch (portName)
+	{
+		case 'A':
+		  GPIO_PORTA_DIR_R = direction;
+		break;  
+		case 'B':
+		  GPIO_PORTB_DIR_R = direction;
+	  break;  
+		case 'C':
+		  GPIO_PORTC_DIR_R = direction;
+		break;  
+		case 'D':
+		  GPIO_PORTD_DIR_R = direction;
+		break;  
+		case 'E':
+		  GPIO_PORTE_DIR_R = direction;
+		break;  
+		case 'F':
+		  GPIO_PORTF_DIR_R = direction;
+		break;  
+	}
+}
+
+
+
+void DIO.writePort( unsigned char portName, unsigned char data)
+{ 
+	switch(portName)
+	{
+		case'A':
+		 GPIO_PORTA_DATA_R = data;
+		break;
+		case'B':
+		 GPIO_PORTB_DATA_R = data;
+		break;
+		case'C':
+		 GPIO_PORTC_DATA_R = data;
+		break;
+		case'D':
+		 GPIO_PORTD_DATA_R = data;
+		break;
+		case'E':
+		 GPIO_PORTE_DATA_R = data;
+		break;
+		case'F':
+		 GPIO_PORTF_DATA_R = data;
+		break;
+	}
+}
+
+
+
+unsigned char DIO.u8ReadPin( unsigned char portName,unsigned char pinNo)
+{
+	switch (portName)
+	{
+		case'A':
+		{ return READ_bit( GPIO_PORTA_DATA_R, pinNo); } break;
+		case'B':
+		{ return READ_bit( GPIO_PORTB_DATA_R, pinNo); } break;
+		case'C':
+		{ return READ_bit( GPIO_PORTC_DATA_R, pinNo); } break;
+		case'D':
+		{ return READ_bit( GPIO_PORTD_DATA_R, pinNo); } break;
+		case'E':
+		{ return READ_bit( GPIO_PORTE_DATA_R, pinNo); } break;
+		case'F':
+		{ return READ_bit( GPIO_PORTF_DATA_R, pinNo); } break;
+	}
+}
+
+
+
+unsigned char DIO.u8ReadPort( unsigned char portName)
+{ 
+	switch ( portName)
+	{ 
+		case'A':
+		{ return GPIO_PORTA_DATA_R; } break;
+		case'B':
+		{ return GPIO_PORTB_DATA_R; } break;
+		case'C':
+		{ return GPIO_PORTC_DATA_R; } break;
+		case'D':
+		{ return GPIO_PORTD_DATA_R; } break;
+		case'E':
+		{ return GPIO_PORTE_DATA_R; } break;
+		case'F':
+		{ return GPIO_PORTF_DATA_R; } break;
+
+	}
+}
+
+
+
+void DIO.enablePullUp( unsigned char portName, unsigned char pinNo )
+{
+	switch(portName)
+	{ 
+		case'A': 
+		{ SET_BIT ( GPIO_PORTA_PUR_R, pinNo );} break;
+		case'B': 
+		{ SET_BIT ( GPIO_PORTB_PUR_R, pinNo );} break;
+		case'C': 
+		{ SET_BIT ( GPIO_PORTC_PUR_R, pinNo );} break;
+		case'D': 
+		{ SET_BIT ( GPIO_PORTD_PUR_R, pinNo );} break;
+		case'E': 
+		{ SET_BIT ( GPIO_PORTE_PUR_R, pinNo );} break;
+		case'F': 
+		{ SET_BIT ( GPIO_PORTF_PUR_R, pinNo );} break;
+	}
+}
+
+
+
+void DIO.u8WriteHighNibble ( unsigned char portName, unsigned char data)
+{
+	data<<=4;
+	switch (portName)
+	{ 
+		case'A':
+		{ GPIO_PORTA_DATA_R &= 0X0F;
+			GPIO_PORTA_DATA_R |= data ;
+		} break;
+		case'B':
+		{ GPIO_PORTB_DATA_R &= 0X0F;
+			GPIO_PORTB_DATA_R |= data ;
+		} break;
+		case'C':
+		{ GPIO_PORTC_DATA_R &= 0X0F;
+			GPIO_PORTC_DATA_R |= data ;
+		} break;
+		case'D':
+		{ GPIO_PORTD_DATA_R &= 0X0F;
+			GPIO_PORTD_DATA_R |= data ;
+		} break;
+		case'E':
+		{ GPIO_PORTE_DATA_R &= 0X0F;
+			GPIO_PORTE_DATA_R |= data ;
+		} break;
+		case'F':
+		{ GPIO_PORTF_DATA_R &= 0X0F;
+			GPIO_PORTF_DATA_R |= data ;
+		} break;
+	}
+}
+
+
+
+void DIO.u8WriteLowNibble ( unsigned char portName, unsigned char data)
+{
+	
+	switch (portName)
+	{ 
+		case'A':
+		{ GPIO_PORTA_DATA_R &= 0XF0;
+			GPIO_PORTA_DATA_R |= data ;
+		} break;
+		case'B':
+		{ GPIO_PORTB_DATA_R &= 0XF0;
+			GPIO_PORTB_DATA_R |= data ;
+		} break;
+		case'C':
+		{ GPIO_PORTC_DATA_R &= 0XF0;
+			GPIO_PORTC_DATA_R |= data ;
+		} break;
+		case'D':
+		{ GPIO_PORTD_DATA_R &= 0XF0;
+			GPIO_PORTD_DATA_R |= data ;
+		} break;
+		case'E':
+		{ GPIO_PORTE_DATA_R &= 0XF0;
+			GPIO_PORTE_DATA_R |= data ;
+		} break;
+		case'F':
+		{ GPIO_PORTF_DATA_R &= 0XF0;
+			GPIO_PORTF_DATA_R |= data ;
+		} break;
+	}
+}
+
+
+
+
+
+			
+	
+
