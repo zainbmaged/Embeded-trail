@@ -69,8 +69,8 @@ void port_init (unsigned char port)
 		break;
 	}
 }
-// set port direction function
-void DIO_vport_dir (unsigned char port, unsigned char pin, unsigned char dir){
+// set pin direction function
+void DIO_vpin_dir (unsigned char port, unsigned char pin, unsigned char dir){
 	switch (port)
 		{
 			case 'A':
