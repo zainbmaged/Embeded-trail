@@ -142,11 +142,6 @@ void DIO_vpin_dir (unsigned char port, unsigned char pin, unsigned char dir){
 						
 		}
 	}
-	
-
-
-
-
 
 // void fuction to write data on one pin
 void DIO_vwrite_PIN(unsigned char port_name, unsigned char DATA ,unsigned char pin_number){
