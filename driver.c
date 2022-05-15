@@ -69,79 +69,79 @@ void port_init (unsigned char port)
 		break;
 	}
 }
-// set port direction function
-void DIO_vport_dir (unsigned char port, unsigned char pin, unsigned char dir){
-	switch (port)
-		{
-			case 'A':
-			case 'a':
-				if (dir == input)
-				{
-					CLR_BIT(GPIO_PORTA_DIR_R, pin);
-				}
-				if (dir == output)
-				{
-					SET_BIT(GPIO_PORTA_DIR_R, pin);
-				}
-				break;
-			case 'B':
-			case 'b':
-				if (dir == input)
-				{
-					CLR_BIT(GPIO_PORTB_DIR_R, pin);
-				}
-				if (dir == output)
-				{
-					SET_BIT(GPIO_PORTB_DIR_R, pin);
-				}
-				break;
-			case 'C':
-			case 'c':
-				if (dir == input)
-				{
-					CLR_BIT(GPIO_PORTC_DIR_R, pin);
-				}
-				if (dir == output)
-				{
-					SET_BIT(GPIO_PORTC_DIR_R, pin);
-				}
-				break;
-			case 'D':
-			case 'd':
-				if (dir == input)
-				{
-					CLR_BIT(GPIO_PORTD_DIR_R, pin);
-				}
-				if (dir == output)
-				{
-					SET_BIT(GPIO_PORTD_DIR_R, pin);
-				}
-				break;
-			case 'E':
-			case 'e':
-				if (dir == input)
-				{
-					CLR_BIT(GPIO_PORTE_DIR_R, pin);
-				}
-				if (dir == output)
-				{
-					SET_BIT(GPIO_PORTE_DIR_R, pin);
-				}
-				break;
-			case 'F':
-			case 'f':
-				if (dir == input)
-				{
-					CLR_BIT(GPIO_PORTF_DIR_R, pin);
-				}
-				if (dir == output)
-				{
-					SET_BIT(GPIO_PORTF_DIR_R, pin);
-				}
-				break;
-						
-		}
-	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
