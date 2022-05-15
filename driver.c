@@ -294,13 +294,6 @@ unsigned char DIO_u8READ_PIN(unsigned char port_name ,unsigned char pin_number){
 }
 
 
-#include "tm4c123gh6pm.h"
-
-#define SET_BIT(reg,bit)     (reg|= (1<<bit))
-#define CLR_BIT(reg,bit)     (reg&=(~(1<<bit)))
-#define TOG_BIT(reg,bit)      (reg^=(1<<bit))
-#define READ_BIT(reg,bit)     (reg&(1<<bit)>>bit)
-
 void DIO_setPortDir( unsigned char portName, unsigned char direction ) // fn to determine direction of any port
 {
 	switch (portName)
