@@ -297,11 +297,6 @@ unsigned char DIO_u8READ_PIN(unsigned char port_name ,unsigned char pin_number){
 }
 
 
-
-
-
-
-
 #include "tm4c123gh6pm.h"
 
 #define SET_BIT(reg,bit)     (reg|= (1<<bit))
@@ -507,4 +502,3 @@ void DIO_u8WriteLowNibble ( unsigned char portName, unsigned char data) // write
 		} break;
 	}
 }
-
