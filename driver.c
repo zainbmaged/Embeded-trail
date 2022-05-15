@@ -502,9 +502,3 @@ void DIO_u8WriteLowNibble ( unsigned char portName, unsigned char data) // write
 		} break;
 	}
 }
-
-
-
-
-
-
