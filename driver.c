@@ -69,7 +69,6 @@ void port_init (unsigned char port)
 		break;
 	}
 }
-<<<<<<< Mahinour-DIO-drivers
 // set pin direction function
 void DIO_vpin_dir (unsigned char port, unsigned char pin, unsigned char dir){
 	switch (port)
