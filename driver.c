@@ -296,3 +296,210 @@ unsigned char DIO_u8READ_PIN(unsigned char port_name ,unsigned char pin_number){
 	 } return 0;
 }
 
+
+#include "tm4c123gh6pm.h"
+
+#define SET_BIT(reg,bit)     (reg|= (1<<bit))
+#define CLR_BIT(reg,bit)     (reg&=(~(1<<bit)))
+#define TOG_BIT(reg,bit)      (reg^=(1<<bit))
+#define READ_BIT(reg,bit)     (reg&(1<<bit)>>bit)
+
+void DIO_setPortDir( unsigned char portName, unsigned char direction ) // fn to determine direction of any port
+{
+	switch (portName)
+	{
+		case 'A':
+		case 'a':
+		  GPIO_PORTA_DIR_R = direction;
+		break;  
+		case 'B':
+		case 'b':
+		  GPIO_PORTB_DIR_R = direction;
+	  break;  
+		case 'C':
+		case 'c':
+		  GPIO_PORTC_DIR_R = direction;
+		break;  
+		case 'D':
+		case 'd':
+		  GPIO_PORTD_DIR_R = direction;
+		break;  
+		case 'E':
+		case 'e':
+		  GPIO_PORTE_DIR_R = direction;
+		break;  
+		case 'F':
+		case 'f':
+		  GPIO_PORTF_DIR_R = direction;
+		break;  
+	}
+}
+
+
+
+void DIO_writePort( unsigned char portName, unsigned char data) // to write in any port
+{ 
+	switch(portName)
+	{
+		case'A':
+		case'a':
+		 GPIO_PORTA_DATA_R = data;
+		break;
+		case'B':
+		case'b':
+		 GPIO_PORTB_DATA_R = data;
+		break;
+		case'C':
+		case'c':
+		 GPIO_PORTC_DATA_R = data;
+		break;
+		case'D':
+		case'd':
+		 GPIO_PORTD_DATA_R = data;
+		break;
+		case'E':
+		case'e':
+		 GPIO_PORTE_DATA_R = data;
+		break;
+		case'F':
+		case'f':
+		 GPIO_PORTF_DATA_R = data;
+		break;
+	}
+}
+
+
+
+unsigned char DIO_u8ReadPort( unsigned char portName) // to read from any port
+{ 
+	switch ( portName)
+	{ 
+		case'A':
+		case'a':
+		{ return GPIO_PORTA_DATA_R; } break;
+		case'B':
+		case'b':
+		{ return GPIO_PORTB_DATA_R; } break;
+		case'C':
+		case'c':
+		{ return GPIO_PORTC_DATA_R; } break;
+		case'D':
+		case'd':
+		{ return GPIO_PORTD_DATA_R; } break;
+		case'E':
+		case'e':
+		{ return GPIO_PORTE_DATA_R; } break;
+		case'F':
+		case'f':
+		{ return GPIO_PORTF_DATA_R; } break;
+
+	}
+}
+
+
+
+void DIO_enablePullUp( unsigned char portName, unsigned char pinNo ) // to enable the pull up resistor of any pin of any port
+{
+	switch(portName)
+	{ 
+		case'A': 
+		case'a':
+		{ SET_BIT ( GPIO_PORTA_PUR_R, pinNo );} break;
+		case'B': 
+		case'b':
+		{ SET_BIT ( GPIO_PORTB_PUR_R, pinNo );} break;
+		case'C':
+    case'c':			
+		{ SET_BIT ( GPIO_PORTC_PUR_R, pinNo );} break;
+		case'D': 
+		case'd':
+		{ SET_BIT ( GPIO_PORTD_PUR_R, pinNo );} break;
+		case'E': 
+		case'e':
+		{ SET_BIT ( GPIO_PORTE_PUR_R, pinNo );} break;
+		case'F': 
+		case'f':
+		{ SET_BIT ( GPIO_PORTF_PUR_R, pinNo );} break;
+	}
+}
+
+
+
+void DIO_u8WriteHighNibble ( unsigned char portName, unsigned char data) // to write in the bits 4-7.
+{
+	data<<=4;
+	switch (portName)
+	{ 
+		case'A':
+		case'a':
+		{ GPIO_PORTA_DATA_R &= 0X0F;
+			GPIO_PORTA_DATA_R |= data ;
+		} break;
+		case'B':
+		case'b':
+		{ GPIO_PORTB_DATA_R &= 0X0F;
+			GPIO_PORTB_DATA_R |= data ;
+		} break;
+		case'C':
+		case'c':
+		{ GPIO_PORTC_DATA_R &= 0X0F;
+			GPIO_PORTC_DATA_R |= data ;
+		} break;
+		case'D':
+		case'd':
+		{ GPIO_PORTD_DATA_R &= 0X0F;
+			GPIO_PORTD_DATA_R |= data ;
+		} break;
+		case'E':
+		case'e':
+		{ GPIO_PORTE_DATA_R &= 0X0F;
+			GPIO_PORTE_DATA_R |= data ;
+		} break;
+		case'F':
+		case'f':
+		{ GPIO_PORTF_DATA_R &= 0X0F;
+			GPIO_PORTF_DATA_R |= data ;
+		} break;
+	}
+}
+
+
+
+void DIO_u8WriteLowNibble ( unsigned char portName, unsigned char data) // write in the 0-3 bits
+{
+
+	switch (portName)
+	{ 
+		case 'A':
+		case 'a':
+		{ GPIO_PORTA_DATA_R &= 0XF0;
+			GPIO_PORTA_DATA_R |= data ;
+		} break;
+		case'B':
+		case'b':
+		{ GPIO_PORTB_DATA_R &= 0XF0;
+			GPIO_PORTB_DATA_R |= data ;
+		} break;
+		case'C':
+		case'c':
+		{ GPIO_PORTC_DATA_R &= 0XF0;
+			GPIO_PORTC_DATA_R |= data ;
+		} break;
+		case'D':
+		case'd':
+		{ GPIO_PORTD_DATA_R &= 0XF0;
+			GPIO_PORTD_DATA_R |= data ;
+		} break;
+		case'E':
+		case'e':
+		{ GPIO_PORTE_DATA_R &= 0XF0;
+			GPIO_PORTE_DATA_R |= data ;
+		} break;
+		case'F':
+		case'f':
+		{ GPIO_PORTF_DATA_R &= 0XF0;
+			GPIO_PORTF_DATA_R |= data ;
+		} break;
+	}
+}
+
