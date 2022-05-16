@@ -2,8 +2,7 @@
 #define NVIC_ST_RELOAD_R        (*((volatile unsigned long *)0xE000E014))
 #define NVIC_ST_CURRENT_R       (*((volatile unsigned long *)0xE000E018))
 #include "Io.h"
-#include "LCD_Driver.h"
-#include "Switches_driver.h"
+#include "drivers_headers.h"
 
 
 
@@ -84,3 +83,4 @@ unsigned char Cooking_Countdown (char *cooking_Time){  //cooking_time = {Min_ten
 		generic_Delay(1000);
 	}
 }
+
