@@ -9,13 +9,18 @@ void LCD_Move_Cursor(char row, char col);
 void LCD_vInit(void);
 
 // switches and Leds drivers
-
+//switches
 void Switch_Init();
 unsigned char readSW1();
 unsigned char readSW2();
 unsigned char readSW3();
 void Switch_Init_Pullup();
-
+//Buzzer
+void Buzzer_vInit(void);
+void Buzzer_On();
+void Buzzer_Off(void);
+void Buzzer_Toggle();
+//Leds
 void Led_Array_vInit(void);
 void Led_Array_On();
 void Led_Array_Off(void);
@@ -26,7 +31,7 @@ void Blink (unsigned char blinks);
 
 void SysTic_wait(unsigned long delay);
 void generic_Delay(unsigned long time); //delay in millisec
-unsigned char Cooking_Countdown (unsigned char *cooking_Time);
+unsigned char Cooking_Countdown (char *cooking_Time);
 
 //DIO driver
 void port_init (unsigned char port);
