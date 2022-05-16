@@ -1,13 +1,8 @@
+//this is our project main file
 #include "tm4c123gh6pm.h"
 #include "driver.c"
 
-#define IDLE 0
-#define StandBy_Weight 1
-#define StandBy_Time 2
-#define Cooking 3
-#define PauseCooking 4
-#define StopCooking 5
-#define CompleteCooking 6
+enum states { IDLE, StandBy_Weight, StandBy_Time, Cooking, PauseCooking, StopCooking, CompleteCooking};
 
 // dont forget to intialize variables at each state for example in IDLE most if not all variables should be intialized with 0
 void Microwave_Control(){
