@@ -10,6 +10,7 @@
 #define StopCooking5
 #define CompleteCooking6
 
+// dont forget to intialize variables at each state for example in IDLE most if not all variables should be intialized with 0
 void Microwave_Control(){
 int state = IDLE;// variable state to select next state intialized to start at IDLE
   while(1){
