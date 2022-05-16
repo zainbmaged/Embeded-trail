@@ -518,3 +518,31 @@ void Button_vinitPullUp (unsigned char port, unsigned char pin)
 	DIO_vpin_dir(port, pin, input); 
 	DIO_enablePullUp(port, pin);
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+//LED Driver
+
+// LED initialization function 
+void LED_init(unsigned char port, unsigned char pin)
+{
+	DIO_vport_dir(port, pin, output);
+}
+
+// turn LED on function
+void LED_on(unsigned char port, unsigned char pin)
+{
+	DIO_vwrite_PIN(port, 1, pin);
+}
+
+// turn LED off function
+void LED_off(unsigned char port, unsigned char pin)
+{
+	DIO_vwrite_PIN(port, 0, pin);
+}
+
+// toggle LED function
+void LED_tog(unsigned char port, unsigned char pin)
+{
+	DIO_vtoggle_PIN(port , pin)
+}
