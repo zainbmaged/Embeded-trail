@@ -35,6 +35,30 @@ unsigned char cooking_status = 0;
      break; 
     case StandBy_Time:  
    //StandBy_Time case code 
+		  
+	port_init (D);
+	KeyPad_vInit();
+	unsigned char sum = 0;
+	char msg[] = "Cooking time?";
+	char *m;
+	LCD_Vsend_String(m);
+	generic_Delay(3000);
+	char nulltime[] = {0,0,':',0,0};
+	char *n;
+	LCD_Vsend_String(n);
+	for(i=0 ;i<5 ;i++)
+	{
+		if(i==3)		
+		{
+		j--;
+		continue;
+		}
+		c=KEYPAD_u8Read(A)
+		LCD_Move_Cursor(1, j);
+		LCD_Vsend_charac(c[]);
+		j--;
+	}
+
       
       
       break;
