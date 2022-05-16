@@ -27,7 +27,7 @@ void systick_wait (unsigned long delay)
 	while ((NVIC_ST_CTRL_R & 0x00010000) == 0)
 	{}
 	}
-void generic_delay (unsigned long time)
+void generic_Delay (unsigned long time)
 {
 	int i;
 	for (i=0;i<time;i++)
