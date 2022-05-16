@@ -29,19 +29,16 @@ void generic_Delay (unsigned long time)
 
 
 
-unsigned char Cooking_Countdown (unsigned char *cooking_Time){  //cooking_time = {Min_tens, Min_ones, ':', Sec_tens, Sec_Ones}   returns 1 if completely finished 
-	unsigned char blink;
+unsigned char Cooking_Countdown (char *cooking_Time){  //cooking_time = {Min_tens, Min_ones, ':', Sec_tens, Sec_Ones}   returns 1 if completely finished 
 	unsigned char array_Counter;
 	
 	while(1){
 		//print current time
 		
 		LCD_CLR_Screen();
-		void Led_Array_On();
-		for(array_Counter=0; array_Counter<5; array_Counter++){  
-			LCD_Vsend_charac(*cooking_Time);
-			cooking_Time++;
-		}
+		Led_Array_On();
+		
+		LCD_Vsend_String(cooking_Time);
 		
 		//subtract time and check if finished
 		if((*cooking_Time)!= '\0'){ //check if Sec_Ones =0
@@ -67,12 +64,11 @@ unsigned char Cooking_Countdown (unsigned char *cooking_Time){  //cooking_time =
 						cooking_Time -= 1;
 						}
 						else{
+							
 							//complete cooking
+							//buzzer
 							Led_Array_Off();
-							for(blink = 0; blink < 6; blink++ ){
-								Led_Array_Toggle();
-								generic_Delay(500);
-							}
+							Blink (3);
 							LCD_CLR_Screen();
 							return 1;
 						}
