@@ -34,7 +34,7 @@ void Switch_Init_Pullup(){
 }
 
 void Buzzer_vInit(void){
-	DIO_vport_dir (Buzzer_port, Buzzer_pin, 1);
+	DIO_vpin_dir (Buzzer_port, Buzzer_pin, 1);
 }
 
 void Buzzer_On(){
