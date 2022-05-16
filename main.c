@@ -46,7 +46,7 @@ unsigned char cooking_status = 0;
 				state = CompleteCooking;
 				}
 			       else  (sw2==1)
-				state = CompleteCooking;
+				state = Cooking;
 			       
 				}
 				
