@@ -8,6 +8,9 @@
 #define READ_BIT(reg,bit)     (reg&(1<<bit)>>bit)
 
 
+////////////////////////////////////////////////////////////////////////////////////////////
+
+//DIO Driver
 
 enum dir {input, output}; //input=0, output=1
 
@@ -491,4 +494,27 @@ void DIO_u8WriteLowNibble ( unsigned char portName, unsigned char data) // write
 			GPIO_PORTF_DATA_R |= data ;
 		} break;
 	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+//BUTTON Driver
+
+//External switch initialization 
+void Button_vinit (unsigned char port, unsigned char pin)
+{
+  DIO_vpin_dir(port, pin, input); 
+}
+
+//read input from ext switch
+unsigned char Button_u8read (unsigned char port, unsigned char pin)
+{
+	return DIO_u8READ_PIN(port, pin);
+}
+
+//enable internal pull up resistor
+void Button_vinitPullUp (unsigned char port, unsigned char pin)
+{
+	DIO_vpin_dir(port, pin, input); 
+	DIO_enablePullUp(port, pin);
 }
