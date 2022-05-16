@@ -546,3 +546,11 @@ void LED_tog(unsigned char port, unsigned char pin)
 {
 	DIO_vtoggle_PIN(port , pin);
 }
+//function to print "Err" on screen for 3 secs then clears screen
+void print_Err(){
+	char msg[] ="Err";
+	char*m;
+	LCD_Vsend_String(m);
+	generic_Delay(3000);
+	LCD_CLR_Screen();
+}
