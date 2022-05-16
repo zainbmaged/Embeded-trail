@@ -45,3 +45,6 @@ unsigned char DIO_u8ReadPort( unsigned char portName);
 void DIO_enablePullUp( unsigned char portName, unsigned char pinNo );
 void DIO_u8WriteHighNibble ( unsigned char portName, unsigned char data);
 void DIO_u8WriteLowNibble ( unsigned char portName, unsigned char data);
+
+//Checks
+unsigned char Is_Valid	(int min, int max, int number);
