@@ -544,5 +544,5 @@ void LED_off(unsigned char port, unsigned char pin)
 // toggle LED function
 void LED_tog(unsigned char port, unsigned char pin)
 {
-	DIO_vtoggle_PIN(port , pin)
+	DIO_vtoggle_PIN(port , pin);
 }
