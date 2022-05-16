@@ -196,7 +196,7 @@ void UART_write (unsigned char num, unsigned char data)
 }
 
 
-//recieve data and write(echo) it in UART(num) port 
+//recieve data and write(echo) it in UART(num) port and display on LCD
 void getCommand(char *str, uint8_t maxLen, unsigned char num ){
  		char c;
 		int8_t i;
@@ -209,13 +209,15 @@ void getCommand(char *str, uint8_t maxLen, unsigned char num ){
   		}
     		else str[i]=c;
     		UART_write(c, num);
+		LCD_Vsend_charac(c);
 		}
 
-//function that prints any onscreen message
+//function that prints any message 
 void printstr(char *str, unsigned char num)
 		{
   		while(*str){
     		UART_write(num, *str);
+		LCD_Vsend_charac(*str);
     		str++;
   		}
 }
