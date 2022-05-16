@@ -215,7 +215,7 @@ void getCommand(char *str, uint8_t maxLen, unsigned char num ){
 void printstr(char *str, unsigned char num)
 		{
   		while(*str){
-    		UART_write(*str, num);
+    		UART_write(num, *str);
     		str++;
   		}
 }
