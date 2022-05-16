@@ -1,4 +1,5 @@
 #include "DIO_Header.h"
+#include "delays.h"
 #define SW3_Port 'A'
 #define SW3_pin 0
 
@@ -57,4 +58,12 @@ void Led_Array_Toggle(){
 	DIO_vtoggle_PIN ('F', 1);
 	DIO_vtoggle_PIN ('F', 2);
 	DIO_vtoggle_PIN ('F', 3);
+}
+
+void Blink (unsigned char blinks){
+	int counter;
+	for(counter = 0 ; counter < blinks*2 ; counter++ ){
+	Led_Array_Toggle();
+	generic_Delay(500);
+	}
 }
