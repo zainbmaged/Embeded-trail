@@ -35,7 +35,7 @@ unsigned char Cooking_Countdown (char *cooking_Time);
 
 //DIO driver
 void port_init (unsigned char port);
-void DIO_vport_dir (unsigned char port, unsigned char pin, unsigned char dir);
+void DIO_vpin_dir (unsigned char port, unsigned char pin, unsigned char dir);
 void DIO_vwrite_PIN(unsigned char port_name, unsigned char DATA ,unsigned char pin_number);
 void DIO_vtoggle_PIN(unsigned char port_name ,unsigned char pin_number);
 unsigned char DIO_u8READ_PIN(unsigned char port_name ,unsigned char pin_number);
