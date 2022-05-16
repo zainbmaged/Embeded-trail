@@ -63,9 +63,9 @@ void LCD_Move_Cursor(char row, char col){	//command to move cursor to a certain 
 
 void LCD_vInit(void){
 	DIO_setPortDir (Data_PORT, 0xFF);
-	DIO_vport_dir (CTRL_PORT, E, 1);
-	DIO_vport_dir (CTRL_PORT, Rs, 1);
-	DIO_vport_dir (CTRL_PORT, Rw, 1);
+	DIO_vpin_dir  (CTRL_PORT, E, 1);
+	DIO_vpin_dir  (CTRL_PORT, Rs, 1);
+	DIO_vpin_dir  (CTRL_PORT, Rw, 1);
 	DIO_vwrite_PIN(CTRL_PORT, 0, Rw);
 	
 	LCD_Vsend_CMD(Eight_Bit);
