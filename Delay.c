@@ -31,6 +31,7 @@ void generic_Delay (unsigned long time)
 
 unsigned char Cooking_Countdown (unsigned char *cooking_Time){  //cooking_time = {Min_tens, Min_ones, ':', Sec_tens, Sec_Ones}   returns 1 if completely finished 
 	unsigned char blink;
+	unsigned char array_Counter;
 	
 	while(1){
 		//print current time
