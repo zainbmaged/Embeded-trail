@@ -2,21 +2,10 @@
 #define NVIC_ST_RELOAD_R        (*((volatile unsigned long *)0xE000E014))
 #define NVIC_ST_CURRENT_R       (*((volatile unsigned long *)0xE000E018))
 #include "Io.h"
+#include "LCD_Driver.h"
+#include "Switches_driver.h"
 
 
-void SystemInit(void){
-
-SYSCTL_RCGCGPIO_R |= 0x20; // PortF clock enable
-while ((SYSCTL_PRGPIO_R & 0x20)==0); //Delay
-GPIO_PORTF_LOCK_R = 0x4C4F434B; // Unlock PortF Commit register
-GPIO_PORTF_CR_R |= 0x0E; // Allow changes to PF1
-GPIO_PORTF_AMSEL_R &= ~0x0E; // Disable analog function
-GPIO_PORTF_PCTL_R &= ~0x00000FFF; // GPIO clear bit PCTL
-GPIO_PORTF_AFSEL_R &= ~0x0E; // No alternate function
-GPIO_PORTF_DIR_R |= 0x0E; // PF321 output
-GPIO_PORTF_DEN_R |= 0x0E; // Enable digital pins PF4-PF0
-GPIO_PORTF_DATA_R &= ~0x0E; // Initialize LEDs to be off
-}	
 
 void systick_wait (unsigned long delay)
 {
@@ -27,7 +16,7 @@ void systick_wait (unsigned long delay)
 	while ((NVIC_ST_CTRL_R & 0x00010000) == 0)
 	{}
 	}
-void generic_delay (unsigned long time)
+void generic_Delay (unsigned long time)
 {
 	int i;
 	for (i=0;i<time;i++)
@@ -35,4 +24,63 @@ void generic_delay (unsigned long time)
 		systick_wait(16000);
 	}
 	
+}
+
+
+
+
+unsigned char Cooking_Countdown (char *cooking_Time){  //cooking_time = {Min_tens, Min_ones, ':', Sec_tens, Sec_Ones}   returns 1 if completely finished 
+	unsigned char array_Counter;
+	
+	while(1){
+		//print current time
+		
+		LCD_CLR_Screen();
+		Led_Array_On();
+		
+		LCD_Vsend_String(cooking_Time);
+		
+		//subtract time and check if finished
+		if((*cooking_Time)!= '\0'){ //check if Sec_Ones =0
+			(*cooking_Time)--;
+			cooking_Time -= 4;
+		}
+		else{
+			cooking_Time--;
+					if((*cooking_Time)!= '\0'){	//check if Sec_tens =0
+						(*cooking_Time)--;
+						 cooking_Time -= 3; 
+					}
+					else{
+						cooking_Time-=2;						//
+						if((*cooking_Time)!= '\0'){	//check if Min_Ones =0
+							(*cooking_Time)--;
+							cooking_Time -= 2;
+						}
+						else{
+						cooking_Time--;
+						if((*cooking_Time)!= '\0'){	//check if Min_tens =0
+						(*cooking_Time)--;
+						cooking_Time -= 1;
+						}
+						else{
+							
+							//complete cooking
+							//buzzer
+							Led_Array_Off();
+							Blink (3);
+							LCD_CLR_Screen();
+							return 1;
+						}
+						
+						}
+						
+					}
+		}
+		
+		//optional interrupt
+		
+		
+		generic_Delay(1000);
+	}
 }
