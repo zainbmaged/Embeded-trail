@@ -3,7 +3,7 @@
 #include "driver.c"
 #include "drivers_headers.h"
 char time[5] = {0,0, ':',0,0};
-enum states { IDLE, StandBy_Weight, StandBy_Time, Cooking, PauseCooking, StopCooking, CompleteCooking};
+enum states { IDLE, StandBy_Weight, StandBy_Time, Cooking, CompleteCooking};
 
 // dont forget to intialize variables at each state for example in IDLE most if not all variables should be intialized with 0
 void Microwave_Control(){
@@ -30,7 +30,7 @@ unsigned char cooking_status = 0;
     break;  
    case StandBy_Weight:  
    // StandBy_Weight case code 
-   
+   if 
       
      break; 
     case StandBy_Time:  
@@ -40,16 +40,21 @@ unsigned char cooking_status = 0;
       break;
     case Cooking:
      			cooking_status  = Cooking_Countdown (time);
-			if (cooking_status ==1)
+			if (sw ==1){
+				PauseCooking(){
+				if (sw1==1){
+				state = CompleteCooking;
+				}
+			       else  (sw2==1)
+				state = CompleteCooking;
+			       
+				}
+				
 				state = CompleteCooking;
       
       
       break;
-   case PauseCooking:
-    //PauseCooking case code
-      
-      
-      break;
+  
   
    case CompleteCooking:
 	Led_Array_Off();
