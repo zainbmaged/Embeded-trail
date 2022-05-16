@@ -1,14 +1,11 @@
-#include "DIO.h"
+#include "DIO_Header.h"
 #include "delays.h"
-
-enum ctrl{E, Rs, Rw};
 
 //connected ports
 #define K_PORT_Row 'A'	//rows port
 #define K_PORT_Col 'B'	//columns port
 #define CTRL_PORT 'A'
 #define Data_PORT 'D'
-
 //commands macros
 #define CLR_Screen 0x01 //clears the LCD
 #define Turn_On 0x0C		//turn on screen only command
@@ -17,23 +14,25 @@ enum ctrl{E, Rs, Rw};
 #define Eight_Bit 0x38
 
 
+enum ctrl{E, Rs, Rw};
+
 
 static void Send_Pulse(void){	//pulse sent to enable
-	DIO_vwrite_PIN(CTRL_PORT,E ,1);
+	DIO_vwrite_PIN(CTRL_PORT,1 ,E);
 	generic_Delay(2);
-	DIO_vwrite_PIN(CTRL_PORT,E ,0);
+	DIO_vwrite_PIN(CTRL_PORT,0 ,E);
 	generic_Delay(2);
 }
 void LCD_Vsend_CMD(char cmd){	
 	DIO_writePort(Data_PORT, cmd);
-	DIO_vwrite_PIN(CTRL_PORT, Rs ,0);
+	DIO_vwrite_PIN(CTRL_PORT, 0 ,Rs);
 	Send_Pulse();
 	generic_Delay(1);
 }
 
 void LCD_Vsend_charac(char charac){
 	DIO_writePort(Data_PORT, charac);
-	DIO_vwrite_PIN(CTRL_PORT, Rs ,1);
+	DIO_vwrite_PIN(CTRL_PORT, 1 ,Rs);
 	Send_Pulse();
 	generic_Delay(1);
 }
@@ -68,7 +67,7 @@ void LCD_vInit(void){
 	DIO_vport_dir (CTRL_PORT, E, 1);
 	DIO_vport_dir (CTRL_PORT, Rs, 1);
 	DIO_vport_dir (CTRL_PORT, Rw, 1);
-	DIO_vwrite_PIN(CTRL_PORT, Rw,0);
+	DIO_vwrite_PIN(CTRL_PORT, 0, Rw);
 	
 	LCD_Vsend_CMD(Eight_Bit);
 	generic_Delay(1);
