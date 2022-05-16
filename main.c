@@ -50,19 +50,15 @@ unsigned char cooking_status = 0;
       
       
       break;
-   case StopCooking:
-		//StopCooking case code
-      
-      break;
+  
    case CompleteCooking:
-		 
-     	
-			Led_Array_Off();
+	Led_Array_Off();
 			Buzzer_On();
 			Blink (3);
 			LCD_CLR_Screen();
-		  state = IDLE;
-      
+		  state = IDLE;	 
+     	
+			
       break;
 
        }
