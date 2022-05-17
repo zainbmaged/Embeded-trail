@@ -40,40 +40,40 @@ unsigned char Cooking_Countdown (char *cooking_Time){  //cooking_time = {Min_ten
 		LCD_Vsend_String(cooking_Time);
 		
 		//subtract time and check if finished
-		if((*cooking_Time)!= '\0'){ //check if Sec_Ones =0
+	
+    if((*cooking_Time)!= '0'){ //check if Sec_Ones =0
 			(*cooking_Time)--;
 			cooking_Time -= 4;
 		}
 		else{
-			cooking_Time--;
-					if((*cooking_Time)!= '\0'){	//check if Sec_tens =0
+			(*cooking_Time)='9';
+			 cooking_Time--;
+					if((*cooking_Time)!= '0'){	//check if Sec_tens =0
 						(*cooking_Time)--;
-						 cooking_Time -= 3; 
+						 cooking_Time -= 3;
 					}
 					else{
-						cooking_Time-=2;						//
-						if((*cooking_Time)!= '\0'){	//check if Min_Ones =0
+						(*cooking_Time) = '5';        // sec_tens = 5
+						cooking_Time-=2;						// skip ':'
+						if((*cooking_Time)!= '0'){	//check if Min_Ones =0
 							(*cooking_Time)--;
 							cooking_Time -= 2;
 						}
 						else{
+						(*cooking_Time) = '9';
 						cooking_Time--;
-						if((*cooking_Time)!= '\0'){	//check if Min_tens =0
+						if((*cooking_Time)!= '0'){	//check if Min_tens =0
 						(*cooking_Time)--;
 						cooking_Time -= 1;
 						}
 						else{
-							
+
 							//complete cooking
-							//buzzer
-							Led_Array_Off();
-							Blink (3);
-							LCD_CLR_Screen();
-							return 1;
+							return 0;
 						}
-						
+
 						}
-						
+
 					}
 		}
 		
@@ -83,4 +83,3 @@ unsigned char Cooking_Countdown (char *cooking_Time){  //cooking_time = {Min_ten
 		generic_Delay(1000);
 	}
 }
-
