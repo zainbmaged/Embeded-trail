@@ -2,7 +2,7 @@
 #include "tm4c123gh6pm.h"
 #include "driver.c"
 #include "drivers_headers.h"
-char time[5] = {0,0, ':',0,0};
+unsigned char time[5] = {0,0, ':',0,0};
 enum states { IDLE, StandBy_Weight, StandBy_Time, Cooking, PauseCooking, StopCooking, CompleteCooking};
 
 // dont forget to intialize variables at each state for example in IDLE most if not all variables should be intialized with 0
