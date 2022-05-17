@@ -40,15 +40,22 @@ unsigned char cooking_status = 0;
       break;
     case Cooking:
      			cooking_status  = Cooking_Countdown (time);
-			if (sw ==1){
-				PauseCooking(){
+			if (sw1 ==1){
+				char t[5] = {0,0, ':',0,0};// empty array to save time at which pause occured
+			   unsigned char PauseCooking(){
+				   // saving pause time index by index
+				t[0]= time[0] ;
+				t[1]=time[1] ;
+				t[2]=time[3] ;
+				t[3]=time[4] ;	
 				if (sw1==1){
 				state = CompleteCooking;
 				}
-			       else  (sw2==1)
+			       else  (sw2==1){
+				cooking_status  = Cooking_Countdown (t);
 				state = Cooking;
-			       
-				}
+			       }return cooking_status;
+			     }
 		        if (cooking_status ==1){
 				state = CompleteCooking;}
       
