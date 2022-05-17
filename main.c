@@ -1,6 +1,5 @@
 //this is our project main file
 #include "tm4c123gh6pm.h"
-#include "driver.c"
 #include "drivers_headers.h"
 unsigned char time[5] = {0,0, ':',0,0};
 enum states { IDLE, StandBy_Weight, StandBy_Time, Cooking, PauseCooking, StopCooking, CompleteCooking};
@@ -17,8 +16,8 @@ unsigned char cooking_status = 0;
   while(1){
   switch (state){
   
-		case IDLE:
-       if (readSW3()==1){
+    case IDLE:
+      
 		time[0] = 0;
 		time[1] = 0;
 		time[3] = 0;
@@ -26,7 +25,7 @@ unsigned char cooking_status = 0;
 		LCD_CLR_Screen();
 		Led_Array_Off();
 		Buzzer_Off();
-          }
+        
       
     break;  
    case StandBy_Weight:  
@@ -40,6 +39,7 @@ unsigned char cooking_status = 0;
       
       break;
     case Cooking:
+		   if (readSW3()==1){
      			cooking_status  = Cooking_Countdown (time);
 			if (cooking_status ==1)
 				state = CompleteCooking;
@@ -50,7 +50,7 @@ unsigned char cooking_status = 0;
 				void pauseCooking(void); //go to pauseCooking if switch 1 is pressed
 			}
 	
-
+		   }
       
       
       break;
