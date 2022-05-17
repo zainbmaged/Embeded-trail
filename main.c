@@ -42,6 +42,14 @@ unsigned char cooking_status = 0;
      			cooking_status  = Cooking_Countdown (time);
 			if (cooking_status ==1)
 				state = CompleteCooking;
+		        
+	                if (readSW1()==0)
+
+			{ 
+				void pauseCooking(void); //go to pauseCooking if switch 1 is pressed
+			}
+	
+
       
       
       break;
