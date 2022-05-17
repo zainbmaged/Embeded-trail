@@ -10,7 +10,8 @@ void Microwave_Control(){
 Switch_Init();
 Buzzer_vInit();
 Led_Array_vInit();
-port_init ('F');	
+port_init ('F');
+port_init ('D');
 	
 int state = IDLE;// variable state to select next state intialized to start at IDLE
 unsigned char cooking_status = 0; 
@@ -35,35 +36,32 @@ unsigned char cooking_status = 0;
      break; 
     case StandBy_Time:  
    //StandBy_Time case code 
-		  
-	port_init (D);
-	KeyPad_vInit();
-	unsigned char sum = 0;
-	unsigned char i = 0;
-	char msg[] = "Cooking time?";
-	char *m;
-	LCD_Vsend_String(m);
-	generic_Delay(3000);
-	char nulltime[] = {0,0,':',0,0};
-	char *n;
-	char c[] ={0,0,0,0};
-	char *c; 
-	LCD_Vsend_String(n);
-	for(j=5 ;j<1 ;j--)
-	{
-		if(j==3)		
-		{
-		continue;
-		}
-		c[i]=KEYPAD_u8Read(A)
-		if(c[i]=='*') break;
-		
-		time_onscreen(j, c);
-		i++;
-		
-	}
-	sum = time_sum(c)
-	state=Cooking;
+	
+KeyPad_vInit();
+uint16_t sum = 0;
+char msg[] = {"Cooking time?"};
+char *m;
+LCD_Vsend_String(m);
+generic_Delay(3000);
+char time[];
+char *t;
+LCD_Vsend_String(t);
+for(i=0 ;i<4 ;i++)
+{
+new_input=KEYPAD_u8Read();
+if(new_input == '*') break;
+shift_arr;
+*(t+4) = new_input;
+}
+sum = time_sum(t);
+if(sum > 1800)
+{
+	print_Err();
+	state = StandBy_Time;
+}
+else
+state = Cooking;
+
 
       
       
