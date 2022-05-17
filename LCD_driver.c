@@ -22,33 +22,33 @@ static void Send_Pulse(void){	//pulse sent to enable
 	DIO_vwrite_PIN(CTRL_PORT,0 ,E);
 	generic_Delay(2);
 }
-void LCD_Vsend_CMD(char cmd){	
+void LCD_Vsend_CMD(unsigned char cmd){	
 	DIO_writePort(Data_PORT, cmd);
 	DIO_vwrite_PIN(CTRL_PORT, 0 ,Rs);
 	Send_Pulse();
 	generic_Delay(1);
 }
 
-void LCD_Vsend_charac(char charac){
+void LCD_Vsend_charac(unsigned char charac){
 	DIO_writePort(Data_PORT, charac);
 	DIO_vwrite_PIN(CTRL_PORT, 1 ,Rs);
 	Send_Pulse();
 	generic_Delay(1);
 }
 
-void LCD_Vsend_String(char *data){
+void LCD_Vsend_String(unsigned char *data){
 	while((*data)!= ('\0')){
 		LCD_Vsend_charac((*data));
 		data++;
 	}
 }
 
-void LCD_CLR_Screen(){
+void LCD_CLR_Screen(void){
 	LCD_Vsend_CMD(CLR_Screen);
 	generic_Delay(10);
 }
 
-void LCD_Move_Cursor(char row, char col){	//command to move cursor to a certain position
+void LCD_Move_Cursor(unsigned char row,unsigned  char col){	//command to move cursor to a certain position
 	char pos = 0;
 	if (row == 1)
 		pos = (0x80) +col-1;
@@ -64,8 +64,8 @@ void LCD_Move_Cursor(char row, char col){	//command to move cursor to a certain 
 void LCD_vInit(void){
 	DIO_setPortDir (Data_PORT, 0xFF);
 	DIO_vpin_dir  (CTRL_PORT, E, 1);
-	DIO_vpin_dir  (CTRL_PORT, Rs, 1);
-	DIO_vpin_dir  (CTRL_PORT, Rw, 1);
+	DIO_vpin_dir (CTRL_PORT, Rs, 1);
+	DIO_vpin_dir (CTRL_PORT, Rw, 1);
 	DIO_vwrite_PIN(CTRL_PORT, 0, Rw);
 	
 	LCD_Vsend_CMD(Eight_Bit);
