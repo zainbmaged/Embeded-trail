@@ -393,30 +393,7 @@ unsigned char DIO_u8ReadPort( unsigned char portName) // to read from any port
 
 
 
-void DIO_enablePullUp( unsigned char portName, unsigned char pinNo ) // to enable the pull up resistor of any pin of any port
-{
-	switch(portName)
-	{ 
-		case'A': 
-		case'a':
-		{ SET_BIT ( GPIO_PORTA_PUR_R, pinNo );} break;
-		case'B': 
-		case'b':
-		{ SET_BIT ( GPIO_PORTB_PUR_R, pinNo );} break;
-		case'C':
-    case'c':			
-		{ SET_BIT ( GPIO_PORTC_PUR_R, pinNo );} break;
-		case'D': 
-		case'd':
-		{ SET_BIT ( GPIO_PORTD_PUR_R, pinNo );} break;
-		case'E': 
-		case'e':
-		{ SET_BIT ( GPIO_PORTE_PUR_R, pinNo );} break;
-		case'F': 
-		case'f':
-		{ SET_BIT ( GPIO_PORTF_PUR_R, pinNo );} break;
-	}
-}
+
 
 
 
