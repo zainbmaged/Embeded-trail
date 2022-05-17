@@ -1,10 +1,8 @@
 #include "drivers_headers.h"
 
 //connected ports
-#define K_PORT_Row 'A'	//rows port
-#define K_PORT_Col 'B'	//columns port
-#define CTRL_PORT 'A'
-#define Data_PORT 'D'
+#define CTRL_PORT 'B'
+#define Data_PORT 'B             '
 //commands macros
 #define CLR_Screen 0x01 //clears the LCD
 #define Turn_On 0x0C		//turn on screen only command
