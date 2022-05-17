@@ -30,7 +30,7 @@ unsigned char cooking_status = 0;
     break;  
    case StandBy_Weight:  
    // StandBy_Weight case code 
-   
+    
       
      break; 
     case StandBy_Time:  
@@ -53,11 +53,7 @@ unsigned char cooking_status = 0;
       
       
       break;
-   case PauseCooking:
-    //PauseCooking case code
-      
-      
-      break;
+ 
   
    case CompleteCooking:
 	Led_Array_Off();
