@@ -297,36 +297,6 @@ unsigned char DIO_u8READ_PIN(unsigned char port_name ,unsigned char pin_number){
 }
 
 
-void DIO_setPortDir( unsigned char portName, unsigned char direction ) // fn to determine direction of any port
-{
-	switch (portName)
-	{
-		case 'A':
-		case 'a':
-		  GPIO_PORTA_DIR_R = direction;
-		break;  
-		case 'B':
-		case 'b':
-		  GPIO_PORTB_DIR_R = direction;
-	  break;  
-		case 'C':
-		case 'c':
-		  GPIO_PORTC_DIR_R = direction;
-		break;  
-		case 'D':
-		case 'd':
-		  GPIO_PORTD_DIR_R = direction;
-		break;  
-		case 'E':
-		case 'e':
-		  GPIO_PORTE_DIR_R = direction;
-		break;  
-		case 'F':
-		case 'f':
-		  GPIO_PORTF_DIR_R = direction;
-		break;  
-	}
-}
 
 
 
