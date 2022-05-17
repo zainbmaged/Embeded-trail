@@ -39,24 +39,27 @@ unsigned char cooking_status = 0;
 	port_init (D);
 	KeyPad_vInit();
 	unsigned char sum = 0;
+	unsigned char i = 0;
 	char msg[] = "Cooking time?";
 	char *m;
 	LCD_Vsend_String(m);
 	generic_Delay(3000);
 	char nulltime[] = {0,0,':',0,0};
 	char *n;
+	char c[4] ={};
+	char *c; 
 	LCD_Vsend_String(n);
-	for(i=0 ;i<5 ;i++)
+	for(j=5 ;j<1 ;j--)
 	{
-		if(i==3)		
+		if(j==3)		
 		{
-		j--;
 		continue;
 		}
-		c=KEYPAD_u8Read(A)
-		LCD_Move_Cursor(1, j);
-		LCD_Vsend_charac(c[]);
-		j--;
+		c[i]=KEYPAD_u8Read(A)
+		if(c[i]=='*') break;
+		time_onscreen(j, c);
+		i++;
+		
 	}
 
       
