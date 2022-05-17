@@ -462,43 +462,7 @@ void DIO_u8WriteHighNibble ( unsigned char portName, unsigned char data) // to w
 
 
 
-void DIO_u8WriteLowNibble ( unsigned char portName, unsigned char data) // write in the 0-3 bits
-{
 
-	switch (portName)
-	{ 
-		case 'A':
-		case 'a':
-		{ GPIO_PORTA_DATA_R &= 0XF0;
-			GPIO_PORTA_DATA_R |= data ;
-		} break;
-		case'B':
-		case'b':
-		{ GPIO_PORTB_DATA_R &= 0XF0;
-			GPIO_PORTB_DATA_R |= data ;
-		} break;
-		case'C':
-		case'c':
-		{ GPIO_PORTC_DATA_R &= 0XF0;
-			GPIO_PORTC_DATA_R |= data ;
-		} break;
-		case'D':
-		case'd':
-		{ GPIO_PORTD_DATA_R &= 0XF0;
-			GPIO_PORTD_DATA_R |= data ;
-		} break;
-		case'E':
-		case'e':
-		{ GPIO_PORTE_DATA_R &= 0XF0;
-			GPIO_PORTE_DATA_R |= data ;
-		} break;
-		case'F':
-		case'f':
-		{ GPIO_PORTF_DATA_R &= 0XF0;
-			GPIO_PORTF_DATA_R |= data ;
-		} break;
-	}
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
