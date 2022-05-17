@@ -1,11 +1,11 @@
 //LCD_Driver
 
 static void Send_Pulse(void);
-void LCD_Vsend_CMD(char cmd);
-void LCD_Vsend_charac(char charac);
-void LCD_Vsend_String(char *data);
+void LCD_Vsend_CMD(unsigned char cmd);
+void LCD_Vsend_charac(unsigned char charac);
+void LCD_Vsend_String(unsigned char *data);
 void LCD_CLR_Screen();
-void LCD_Move_Cursor(char row, char col);
+void LCD_Move_Cursor(unsigned char row, unsigned char col);
 void LCD_vInit(void);
 
 // switches and Leds drivers
@@ -31,7 +31,7 @@ void Blink (unsigned char blinks);
 
 void SysTic_wait(unsigned long delay);
 void generic_Delay(unsigned long time); //delay in millisec
-unsigned char Cooking_Countdown (char *cooking_Time);
+unsigned char Cooking_Countdown (unsigned char *cooking_Time);
 
 //DIO driver
 void port_init (unsigned char port);
@@ -45,6 +45,3 @@ unsigned char DIO_u8ReadPort( unsigned char portName);
 void DIO_enablePullUp( unsigned char portName, unsigned char pinNo );
 void DIO_u8WriteHighNibble ( unsigned char portName, unsigned char data);
 void DIO_u8WriteLowNibble ( unsigned char portName, unsigned char data);
-
-//Checks
-unsigned char Is_Valid	(int min, int max, int number);
