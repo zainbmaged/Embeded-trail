@@ -46,7 +46,7 @@ unsigned char cooking_status = 0;
 	generic_Delay(3000);
 	char nulltime[] = {0,0,':',0,0};
 	char *n;
-	char c[4] ={};
+	char c[] ={0,0,0,0};
 	char *c; 
 	LCD_Vsend_String(n);
 	for(j=5 ;j<1 ;j--)
@@ -57,10 +57,13 @@ unsigned char cooking_status = 0;
 		}
 		c[i]=KEYPAD_u8Read(A)
 		if(c[i]=='*') break;
+		
 		time_onscreen(j, c);
 		i++;
 		
 	}
+	sum = time_sum(c)
+	state=Cooking;
 
       
       
