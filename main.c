@@ -16,8 +16,9 @@ int state = IDLE;// variable state to select next state intialized to start at I
 unsigned char cooking_status = 0; 
   while(1){
   switch (state){
-  if (readSW3()==1){
+  
 		case IDLE:
+       if (readSW3()==1){
 		time[0] = 0;
 		time[1] = 0;
 		time[3] = 0;
@@ -25,7 +26,7 @@ unsigned char cooking_status = 0;
 		LCD_CLR_Screen();
 		Led_Array_Off();
 		Buzzer_Off();
-  }
+          }
       
     break;  
    case StandBy_Weight:  
