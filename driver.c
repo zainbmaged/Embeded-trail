@@ -533,7 +533,7 @@ void Button_vinitPullUp (unsigned char port, unsigned char pin)
 // LED initialization function 
 void LED_init(unsigned char port, unsigned char pin)
 {
-	DIO_vport_dir(port, pin, output);
+	DIO_vpin_dir(port, pin, output);
 }
 
 // turn LED on function
