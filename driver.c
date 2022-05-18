@@ -504,32 +504,8 @@ void DIO_u8WriteLowNibble ( unsigned char portName, unsigned char data) // write
 }
 
 
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-//BUTTON Driver
-
-//External switch initialization 
-void Button_vinit (unsigned char port, unsigned char pin)
-{
-  DIO_vpin_dir(port, pin, input); 
-}
-
-//read input from ext switch
-unsigned char Button_u8read (unsigned char port, unsigned char pin)
-{
-	return DIO_u8READ_PIN(port, pin);
-}
-
-//enable internal pull up resistor
-void Button_vinitPullUp (unsigned char port, unsigned char pin)
-{
-	DIO_vpin_dir(port, pin, input); 
-	DIO_enablePullUp(port, pin);
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////
 
 //LED Driver
 
