@@ -4,10 +4,12 @@
 #define Buzzer_pin 3
 #include "drivers_headers.h"
 
-void Switch_Init(){
-	DIO_vpin_dir ('F', 0, 0);
-	DIO_vpin_dir ('F', 4, 0);
-	DIO_vpin_dir (SW3_Port, SW3_pin, 0);
+
+//initialize switches 
+void Switch_Init(){							
+	DIO_vpin_dir ('F', 0, 0); 		//SW2
+	DIO_vpin_dir ('F', 4, 0);		//SW1
+	DIO_vpin_dir (SW3_Port, SW3_pin, 0); 	//SW3
 }
 
 unsigned char readSW1(){
