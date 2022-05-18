@@ -35,7 +35,7 @@ void Switch_Init_Pullup(){
 	DIO_enablePullUp (SW3_Port, SW3_pin);
 }
 
-void Buzzer_vInit(void){
+ void Buzzer_vInit(void){
 	DIO_vpin_dir (Buzzer_port, Buzzer_pin, 1);
 }
 
@@ -53,7 +53,6 @@ void Buzzer_Off(void){
 void Buzzer_Toggle(){
 	DIO_vtoggle_PIN (Buzzer_port,Buzzer_pin );
 }
-
 
 void Led_Array_vInit(void){
 	DIO_vpin_dir ('F', 1, 1);
