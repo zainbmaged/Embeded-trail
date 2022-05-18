@@ -5,10 +5,10 @@
 ### 1- drivers files:
 
 which contain the drivers used in this project
-**DIO Driver:** configures GPIO ports
-**External Switch Driver:** configures external switch 
-**LCD Driver:** configures LCD
-**KeyPad Driver:** configures KeyPad
+• **DIO Driver:** configures GPIO ports
+• **External Switch Driver:** configures external switch 
+• **LCD Driver:** configures LCD
+• **KeyPad Driver:** configures KeyPad
 
 ### 2- main.c file which contain the main program code 
 the code executes the following:
@@ -66,4 +66,4 @@ timed cooking or defrosting), the array of LEDs should flash 3 times (wait time 
 wait time off), and the buzzer should produce an audible tone/alarm during these 3
 second times periods.'
 
-* List item * List item
+
