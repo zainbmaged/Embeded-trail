@@ -1,4 +1,5 @@
 #include "stdint.h"
+unsigned char pauseCooking(void);
 //LCD_Driver
 
 static void Send_Pulse(void);
