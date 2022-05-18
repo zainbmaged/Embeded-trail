@@ -1,7 +1,9 @@
 
 #include "drivers_headers.h"
 #include "tm4c123gh6pm.h"
-void pauseCooking(void)
+// return zero means continue cooking state
+// return one means stop cooking IDLE state
+unsigned char pauseCooking(void)
 {
 	
  
@@ -23,15 +25,13 @@ void pauseCooking(void)
 	   
 		
    if (readSW2() == 0 && readSW3() == 1 )   //sw2 is clicked and door is closed cont cooking
-		{state =  Cooking;
-		break;
+		{ return 0 ; 
 		}
 	
 	
    else if (readSW1() ==0)  //clicked 2nd time stop cooking
 	
-		{state = IDLE ; 
-		 break;
+		{ return 1 ;
 		}
 	
    
