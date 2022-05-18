@@ -1,6 +1,7 @@
 # This file is  used for explanation and notes for the project
 ## the repo contents are:
-1- driver.c file which contain the drivers used in this project
+###1- drivers files:
+**Bold**which contain the drivers used in this project
 DIO Driver: configures GPIO ports
 BUTTON Driver: configures external switch 
 LED Driver: configures RGB LEDS of the tiva c board
