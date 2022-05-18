@@ -1,8 +1,24 @@
 //this is our project main file
 #include "tm4c123gh6pm.h"
 #include "drivers_headers.h"
-unsigned char time[5] = {0,0, ':',0,0};
-enum states { IDLE, StandBy_Weight, StandBy_Time, Cooking, PauseCooking, StopCooking, CompleteCooking};
+
+#define Popcorn 'A'
+#define Beef 'B'
+#define Chicken 'C'
+#define StandBy_Time 'D'
+
+unsigned char time[5] = {'0','0', ':','0','0'};
+enum states {IDLE, Cooking, PauseCooking, CompleteCooking};
+
+
+//variable
+int state = IDLE;		// variable state to select next state intialized to start at IDLE
+unsigned char cooking_status = 0; 
+unsigned char weight;
+unsigned int  weight_time;
+unsigned  char msg_Beef[] = "Beef weight?";
+unsigned  char msg_Chicken[] = "Chicken weight?";
+
 
 // dont forget to intialize variables at each state for example in IDLE most if not all variables should be intialized with 0
 int main(){
@@ -32,14 +48,46 @@ unsigned char cooking_status = 0;
 		LCD_CLR_Screen();
 		Led_Array_Off();
 		Buzzer_Off();
+		 state = KEYPAD_u8Read();
         
       
     break;  
-   case StandBy_Weight:  
-   // StandBy_Weight case code 
+
     
-      
-     break; 
+	case Popcorn:  
+		  time[1] = '1'; 
+		  state = Cooking;
+	break; 
+	case Beef:  
+		  LCD_CLR_Screen();
+		  LCD_Vsend_String(msg_Beef);
+		  weight = KEYPAD_u8Read();
+		  if(Is_Valid(49, 57, weight)){
+			  weight_time = weight*30;
+			  convert_to_array(weight_time, time);
+			  state = Cooking;
+			  LCD_CLR_Screen();
+		  }
+		  else{
+			  print_Err();
+			  state = Beef;
+		  }
+	break; 
+	case Chicken:  
+		  LCD_CLR_Screen();
+		  LCD_Vsend_String(msg_Beef);
+		  weight = KEYPAD_u8Read();
+		  if(Is_Valid(49, 57, weight)){
+			  weight_time = weight*30;
+			  convert_to_array(weight_time, time);
+			  state = Cooking;
+			  LCD_CLR_Screen();
+		  }
+		  else{
+			  print_Err();
+			  state = Chicken;
+		  }
+      break; 
     case StandBy_Time:  
    //StandBy_Time case code 
 	
@@ -78,11 +126,6 @@ unsigned char cooking_status = 0;
 			if (cooking_status ==1)
 				state = CompleteCooking;
 		        
-	                if (readSW1()==0)
-
-			{ 
-				void pauseCooking(void); //go to pauseCooking if switch 1 is pressed
-			}
 	
 		   }
       
@@ -91,10 +134,10 @@ unsigned char cooking_status = 0;
  
   case CompleteCooking:
 	Led_Array_Off();
-			Buzzer_On();
-			Blink (3);
-			LCD_CLR_Screen();
-		  state = IDLE;	 
+	Buzzer_On();
+	Blink (3);
+	LCD_CLR_Screen();
+	state = IDLE;	 
      	
 			
       break;
