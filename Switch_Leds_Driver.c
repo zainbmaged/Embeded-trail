@@ -1,7 +1,7 @@
 #define SW3_Port 'A'
-#define SW3_pin 0
+#define SW3_pin 2
 #define Buzzer_port 'A'
-#define Buzzer_pin 1
+#define Buzzer_pin 3
 #include "drivers_headers.h"
 
 void Switch_Init(){
