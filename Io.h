@@ -165,3 +165,4 @@
 #define GPIO_PORTE_PCTL_R       (*((volatile unsigned long *)0x4002452C))
 #define GPIO_PORTE_ADCCTL_R     (*((volatile unsigned long *)0x40024530))
 #define GPIO_PORTE_DMACTL_R     (*((volatile unsigned long *)0x40024534))
+	
