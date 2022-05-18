@@ -42,6 +42,8 @@ void port_init (unsigned char port)
 		case 'c':
 		SET_BIT(SYSCTL_RCGCGPIO_R,2);
 		while (READ_BIT(SYSCTL_PRGPIO_R,2) == 0);
+		GPIO_PORTB_LOCK_R = 0x4C4F434B;
+		GPIO_PORTB_CR_R |= 0xFF;
 		GPIO_PORTC_DEN_R = 0xFF;
 		break;
 		
@@ -562,3 +564,57 @@ void print_Err(){
 	generic_Delay(3000);
 	LCD_CLR_Screen();
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+//KEYPAD Driver
+
+// keypad initialization
+void KeyPad_vInit()
+{
+port_init('E');
+port_init('C');
+DIO_vpin_dir ('E', 0, output );
+DIO_vpin_dir ('E', 1, output );
+DIO_vpin_dir ('E', 2, output );
+DIO_vpin_dir ('E', 3, output );  //Rows are initilaized as output in lower pins in port E
+DIO_vpin_dir ('C', 4, input );
+DIO_vpin_dir ('C', 5, input );
+DIO_vpin_dir ('C', 6, input );
+DIO_vpin_dir ('C', 7, input );	//Columbs are initilaized as input in higher pins in port C
+DIO_enablePullUp('C', 4);
+DIO_enablePullUp('C', 5);
+DIO_enablePullUp('C', 6);
+DIO_enablePullUp('C', 7);
+}
+
+//read pressed key from keypad
+unsigned char KEYPAD_u8Read()
+{
+	unsigned char keys [4][4]= {{'1','2','3','A'},{'4','5','6','B'},{'7','8','9','C'},{'*','0','#','D'}};
+	char row, col, j;
+	char return_value = 0xFF; // initialize return value as 1 for all pins (no key is pushed)
+	for(row=0 ;row<4 ;row++)
+	{
+		DIO_u8WriteLowNibble(E,0xFF); // all output pins (lower nibble of E) initialized with 1 
+		DIO_vwrite_PIN(E,0,row); // row of iteration has value 0
+		for (col = 4 ;col <7 ;col++)
+		{
+			j = DIO_u8READ_PIN(C, col);						
+			if(j == 0)
+			{
+				return_value = keys [row][col];
+				break;
+			}
+		}
+		if(j == 0)
+		{
+				break;
+		}
+	}
+	return return_value;
+}
+
+
+
+	
