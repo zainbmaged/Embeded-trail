@@ -79,7 +79,11 @@ unsigned char Cooking_Countdown (unsigned char *cooking_Time){  //cooking_time =
 		
 		//optional interrupt
 		
-		
+	if (readSW1() ==0 || readSW3() == 0) //if sw1 is clicked or the door is open goe to pauseCooking  
+	  { 
+	   pauseCooking (void);
+	  
+	  } 
 		generic_Delay(1000);
 	}
 }
