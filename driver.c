@@ -536,8 +536,8 @@ unsigned char KEYPAD_u8Read()
 	char return_value = 0xFF; // initialize return value as 1 for all pins (no key is pushed)
 	for(row=0 ;row<4 ;row++)
 	{
-		DIO_u8WriteLowNibble(E,0xFF); // all output pins (lower nibble of E) initialized with 1 
-		DIO_vwrite_PIN(E,0,row); // row of iteration has value 0
+		DIO_u8WriteLowNibble('E',0xFF); // all output pins (lower nibble of E) initialized with 1 
+		DIO_vwrite_PIN('E',0,row); // row of iteration has value 0
 		for (col = 4 ;col <7 ;col++)
 		{
 			j = DIO_u8READ_PIN(C, col);						
