@@ -532,15 +532,15 @@ DIO_enablePullUp('C', 7);
 unsigned char KEYPAD_u8Read()
 {
 	unsigned char keys [4][4]= {{'1','2','3','A'},{'4','5','6','B'},{'7','8','9','C'},{'*','0','#','D'}};
-	char row, col, j;
-	char return_value = 0xFF; // initialize return value as 1 for all pins (no key is pushed)
+	unsigned char row, col, j;
+	unsigned char return_value = 0xFF; // initialize return value as 1 for all pins (no key is pushed)
 	for(row=0 ;row<4 ;row++)
 	{
-		DIO_u8WriteLowNibble(E,0xFF); // all output pins (lower nibble of E) initialized with 1 
-		DIO_vwrite_PIN(E,0,row); // row of iteration has value 0
+		DIO_u8WriteLowNibble('E',0xFF); // all output pins (lower nibble of E) initialized with 1 
+		DIO_vwrite_PIN('E',0,row); // row of iteration has value 0
 		for (col = 4 ;col <7 ;col++)
 		{
-			j = DIO_u8READ_PIN(C, col);						
+			j = DIO_u8READ_PIN('C', col);						
 			if(j == 0)
 			{
 				return_value = keys [row][col];
@@ -554,6 +554,7 @@ unsigned char KEYPAD_u8Read()
 	}
 	return return_value;
 }
+
 
 
 
