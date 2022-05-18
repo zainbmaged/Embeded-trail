@@ -1,3 +1,4 @@
+#include "stdint.h"
 //LCD_Driver
 
 static void Send_Pulse(void);
@@ -45,3 +46,14 @@ unsigned char DIO_u8ReadPort( unsigned char portName);
 void DIO_enablePullUp( unsigned char portName, unsigned char pinNo );
 void DIO_u8WriteHighNibble ( unsigned char portName, unsigned char data);
 void DIO_u8WriteLowNibble ( unsigned char portName, unsigned char data);
+
+//Checkers
+unsigned char Is_Valid	(unsigned int min, unsigned int max, unsigned int number); //false =0 true 1
+void convert_to_array(unsigned int t, unsigned char* Atime);
+void print_Err();
+uint16_t time_sum (char *t);
+void shift_arr(char *t);
+
+//Keypad
+unsigned char KEYPAD_u8Read();
+void KeyPad_vInit();
