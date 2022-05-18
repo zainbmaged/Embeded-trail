@@ -65,3 +65,5 @@ When the microwave completes its function and timer has counted down to zero (re
 timed cooking or defrosting), the array of LEDs should flash 3 times (wait time on and
 wait time off), and the buzzer should produce an audible tone/alarm during these 3
 second times periods.'
+
+* List item * List item
