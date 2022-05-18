@@ -122,8 +122,12 @@ unsigned char cooking_status = 0;
     case Cooking:
 		   if (readSW3()==1){
      			cooking_status  = Cooking_Countdown (time);
-			if (cooking_status ==1)
+			if (cooking_status ==2)
 				state = CompleteCooking;
+			else if(cooking_status== 0)
+				state = Cooking;
+			else if(cooking_status== 1)   
+				state = IDLE;
 		        
 	
 		   }
