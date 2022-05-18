@@ -5,12 +5,18 @@ unsigned char time[5] = {0,0, ':',0,0};
 enum states { IDLE, StandBy_Weight, StandBy_Time, Cooking, PauseCooking, StopCooking, CompleteCooking};
 
 // dont forget to intialize variables at each state for example in IDLE most if not all variables should be intialized with 0
-void Microwave_Control(){
+int main(){
 Switch_Init();
 Buzzer_vInit();
 Led_Array_vInit();
+KeyPad_vInit();
+LCD_vInit();
+port_init ('A');
+port_init ('B');
+port_init ('C');
+port_init ('E');
 port_init ('F');
-port_init ('D');
+
 	
 int state = IDLE;// variable state to select next state intialized to start at IDLE
 unsigned char cooking_status = 0; 
