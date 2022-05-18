@@ -13,11 +13,11 @@ void pauseCooking(void)
 	 } //blink leds
 			
 	
-  if (readSW2() == 0 && readSW3() == 1 )   //sw2 is clicked and door is closed 
+  if (readSW2() == 0 && readSW3() == 1 )   //sw2 is clicked and door is closed cont cooking
 		{state =  Cooking;}
 	
 	
-  else if (readSW1() ==0)  //clicked 2nd time
+  else if (readSW1() ==0)  //clicked 2nd time stop cooking
 	
 		{state = IDLE ; }
 	
@@ -28,7 +28,7 @@ void pauseCooking(void)
 	   generic_delay(1000);
 	   systick_wait(80000);
    }
-	
+	// stay in pause
 
 }
 
