@@ -26,14 +26,15 @@ uint16_t time_sum (char *t)
 //function to print "Err" onscreen for 3 secs the clears screen
 void print_Err()
 {
-LCD_CLR_Screen();
-char msg[] = "Err";
-char *m;
-LCD_Vsend_String(m);
-generic_Delay(3000);
-LCD_CLR_Screen();
+		unsigned char msg[] = "Err";
+		unsigned char *m;
+	
+	LCD_CLR_Screen();
+	m = msg;
+	LCD_Vsend_String(m);
+	generic_Delay(3000);
+	LCD_CLR_Screen();
 }
-
 
 
 
