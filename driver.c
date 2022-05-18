@@ -507,42 +507,6 @@ void DIO_u8WriteLowNibble ( unsigned char portName, unsigned char data) // write
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//LED Driver
-
-// LED initialization function 
-void LED_init(unsigned char port, unsigned char pin)
-{
-	DIO_vpin_dir(port, pin, output);
-}
-
-// turn LED on function
-void LED_on(unsigned char port, unsigned char pin)
-{
-	DIO_vwrite_PIN(port, 1, pin);
-}
-
-// turn LED off function
-void LED_off(unsigned char port, unsigned char pin)
-{
-	DIO_vwrite_PIN(port, 0, pin);
-}
-
-// toggle LED function
-void LED_tog(unsigned char port, unsigned char pin)
-{
-	DIO_vtoggle_PIN(port , pin);
-}
-//function to print "Err" on screen for 3 secs then clears screen
-void print_Err(){
-	char msg[] ="Err";
-	char*m;
-	LCD_Vsend_String(m);
-	generic_Delay(3000);
-	LCD_CLR_Screen();
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////
-
 //KEYPAD Driver
 
 // keypad initialization
