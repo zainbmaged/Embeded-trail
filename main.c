@@ -13,11 +13,7 @@ enum states {IDLE, Cooking, PauseCooking, CompleteCooking};
 
 //variable
 int state = IDLE;		// variable state to select next state intialized to start at IDLE
-unsigned char cooking_status = 0; 
-unsigned char weight;
-unsigned int  weight_time;
-unsigned  char msg_Beef[] = "Beef weight?";
-unsigned  char msg_Chicken[] = "Chicken weight?";
+
 
 
 // dont forget to intialize variables at each state for example in IDLE most if not all variables should be intialized with 0
@@ -32,7 +28,16 @@ port_init ('B');
 port_init ('C');
 port_init ('E');
 port_init ('F');
-
+unsigned char cooking_status = 0; 
+unsigned char weight;
+unsigned int  weight_time;
+unsigned  char msg_Beef[] = "Beef weight?";
+unsigned  char msg_Chicken[] = "Chicken weight?";
+unsigned char new_input = 0;
+uint16_t sum = 0;
+unsigned char msg[] = {"Cooking time?"};
+unsigned char *m;
+unsigned char *t;
 	
 int state = IDLE;// variable state to select next state intialized to start at IDLE
 unsigned char cooking_status = 0; 
@@ -90,13 +95,6 @@ unsigned char cooking_status = 0;
       break; 
     case StandBy_Time:  
    //StandBy_Time case code 
-	
-	unsigned char new_input = 0;
-	uint16_t sum = 0;
-	unsigned char msg[] = {"Cooking time?"};
-	unsigned char time[];
-	unsigned char *m;
-	unsigned char *t;
 	m = msg;
 	t = time;
 	LCD_Vsend_String(m);
