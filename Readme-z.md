@@ -1,14 +1,24 @@
 # This file is  used for explanation and notes for the project
-## the repo contents are:
-###1- drivers files:
-**Bold**which contain the drivers used in this project
-DIO Driver: configures GPIO ports
-BUTTON Driver: configures external switch 
-LED Driver: configures RGB LEDS of the tiva c board
 
-2- main.c file which contain the main program code 
+## the repo contents are:
+
+### 1- drivers files:
+
+which contain the drivers used in this project
+**DIO Driver:** configures GPIO ports
+**External Switch Driver:** configures external switch 
+**LCD Driver:** configures LCD
+**KeyPad Driver:** configures KeyPad
+
+### 2- main.c file which contain the main program code 
 the code executes the following:
-While not cooking (stopped), enter a choice to begin cooking:
+
+**IDLE** intial state
+**Cooking** the main function 
+**Pause_Cooking** interrupt main state
+**Complete_Cooking** finalize  the function and returnback to intial state
+
+'While not cooking (stopped), enter a choice to begin cooking:
 • If A is pushed on the keypad (for popcorn), the LCD should show “Popcorn” and then
 cook for 1 minute while the remaining cook time counts down (in seconds) on the LCD,
 then clear the LCD after cooking completes.
@@ -54,4 +64,4 @@ off) till the cooking is resumed or stopped.
 When the microwave completes its function and timer has counted down to zero (regular
 timed cooking or defrosting), the array of LEDs should flash 3 times (wait time on and
 wait time off), and the buzzer should produce an audible tone/alarm during these 3
-second times periods.
+second times periods.'
