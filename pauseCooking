@@ -2,7 +2,7 @@ void pauseCooking(void)
 {
 	
  
-	// blink leds 
+	
 
 	 while (readSW1()==0)
 	 {
