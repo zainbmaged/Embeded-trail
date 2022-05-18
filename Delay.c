@@ -27,8 +27,8 @@ void generic_Delay (unsigned long time)
 
 
 
-
-unsigned char Cooking_Countdown (unsigned char *cooking_Time){  //cooking_time = {Min_tens, Min_ones, ':', Sec_tens, Sec_Ones}   returns 1 if completely finished 
+// 2 complete  1 stop 0 continue
+unsigned char Cooking_Countdown (unsigned char *cooking_Time){  //cooking_time = {Min_tens, Min_ones, ':', Sec_tens, Sec_Ones}   returns 2 if completely finished 
 	unsigned char array_Counter;
 	
 	while(1){
@@ -69,7 +69,7 @@ unsigned char Cooking_Countdown (unsigned char *cooking_Time){  //cooking_time =
 						else{
 
 							//complete cooking
-							return 0;
+							return 2;
 						}
 
 						}
@@ -83,9 +83,7 @@ unsigned char Cooking_Countdown (unsigned char *cooking_Time){  //cooking_time =
 	  { 
 	   return pauseCooking (void);
 	   
-		
-	  
-	  } 
+	 } 
 		generic_Delay(1000);
 	}
 }
