@@ -83,8 +83,7 @@ unsigned char cooking_status = 0;
       
       break;
  
-  
-   case CompleteCooking:
+  case CompleteCooking:
 	Led_Array_Off();
 			Buzzer_On();
 			Blink (3);
@@ -93,6 +92,7 @@ unsigned char cooking_status = 0;
      	
 			
       break;
+  
 
        }
   }
