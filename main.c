@@ -37,35 +37,35 @@ unsigned char cooking_status = 0;
     case StandBy_Time:  
    //StandBy_Time case code 
 	
-KeyPad_vInit();
-uint16_t sum = 0;
-char msg[] = {"Cooking time?"};
-char *m;
-LCD_Vsend_String(m);
-generic_Delay(3000);
-char time[];
-char *t;
-LCD_Vsend_String(t);
-for(i=0 ;i<4 ;i++)
-{
-new_input=KEYPAD_u8Read();
-if(new_input == '*') break;
-shift_arr;
-*(t+4) = new_input;
-}
-sum = time_sum(t);
-if(sum > 1800)
-{
-	print_Err();
-	state = StandBy_Time;
-}
-else
-state = Cooking;
-
-
-      
-      
-      break;
+	KeyPad_vInit();
+	unsigned char new_input = 0;
+	uint16_t sum = 0;
+	char msg[] = {"Cooking time?"};
+	char *m;
+	LCD_Vsend_String(m);
+	generic_Delay(3000);
+	char time[];
+	char *t;
+	LCD_Vsend_String(t);
+	for(i=0 ;i<4 ;i++)
+	{
+	new_input=KEYPAD_u8Read();
+	if(new_input == '*') break;
+	shift_arr(t);
+	*(t+4) = new_input;
+	}
+	sum = time_sum(t);
+	if(sum > 1800)
+	{
+		print_Err();
+		state = StandBy_Time;
+	}
+	else
+	{
+	state = Cooking;
+	}
+	      break;
+		  
     case Cooking:
      			cooking_status  = Cooking_Countdown (time);
 			if (cooking_status ==1)
