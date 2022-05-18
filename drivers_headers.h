@@ -52,8 +52,8 @@ void DIO_u8WriteLowNibble ( unsigned char portName, unsigned char data);
 unsigned char Is_Valid	(unsigned int min, unsigned int max, unsigned int number); //false =0 true 1
 void convert_to_array(unsigned int t, unsigned char* Atime);
 void print_Err();
-uint16_t time_sum (char *t);
-void shift_arr(char *t);
+uint16_t time_sum (unsigned char *t);
+void shift_arr(unsigned char *t);
 
 //Keypad
 unsigned char KEYPAD_u8Read();
