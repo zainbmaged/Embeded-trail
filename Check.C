@@ -1,10 +1,31 @@
-unsigned char Is_Valid	(int min, int max, int number){ 
+#include "stdint.h"
+#include "drivers_headers.h"
+
+
+unsigned char Is_Valid	(unsigned int min, unsigned int max, unsigned int number){ //false =0 true 1
 	if(number<=min)
 		return 0;
-	else if(number>=max)
+	else if(number>= max)
 		return 0;
 	else
 		return 1;
+}
+
+void convert_to_array(unsigned int t, unsigned char* Atime){  //send time and array time
+	unsigned int remainder;
+
+	
+	
+	(*Atime) = ((unsigned int)t/600 + 48); //set Min_Tens
+	 remainder = t-((unsigned int)(*Atime)-48)*600;
+	
+	(*(Atime+1)) = ((unsigned int)(remainder)/60) + 48;
+	remainder = remainder+ (unsigned int)((*(Atime+1))-48)*60;
+	
+	*(Atime+3) = ((unsigned int)(remainder)/10) + 48;
+	remainder = remainder+ (unsigned int)((*(Atime+3))-48)*10;
+	
+	*(Atime+4) = ((unsigned int)(remainder)) + 48;
 }
 
 // function to shift the time array by one time slot to the left
