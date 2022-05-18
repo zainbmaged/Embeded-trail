@@ -66,4 +66,5 @@ timed cooking or defrosting), the array of LEDs should flash 3 times (wait time 
 wait time off), and the buzzer should produce an audible tone/alarm during these 3
 second times periods.'
 
+[link for the markdown]([link.com](https://www.freecodecamp.org/news/markdown-cheat-sheet/))
 
