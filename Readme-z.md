@@ -5,10 +5,10 @@
 ### 1- drivers files:
 
 which contain the drivers used in this project
-• **DIO Driver:** configures GPIO ports
-• **External Switch Driver:** configures external switch 
-• **LCD Driver:** configures LCD
-• **KeyPad Driver:** configures KeyPad
+*•* **DIO Driver:** configures GPIO ports
+*•* **External Switch Driver:** configures external switch 
+*•* **LCD Driver:** configures LCD
+*•* **KeyPad Driver:** configures KeyPad
 
 ### 2- main.c file which contain the main program code 
 the code executes the following:
