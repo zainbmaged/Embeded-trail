@@ -38,7 +38,7 @@ uint16_t sum = 0;
 unsigned char msg[] = {"Cooking time?"};
 unsigned char *m;
 unsigned char *t;
-	
+unsigned char i;
 int state = IDLE;// variable state to select next state intialized to start at IDLE
 unsigned char cooking_status = 0; 
   while(1){
