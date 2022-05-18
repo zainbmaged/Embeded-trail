@@ -29,7 +29,7 @@ void convert_to_array(unsigned int t, unsigned char* Atime){  //send time and ar
 }
 
 // function to shift the time array by one time slot to the left
-void shift_arr(char *t)
+void shift_arr(unsigned char *t)
 {
 	*t = *(t+1);
 	*(t+1) = *(t+3);
@@ -37,7 +37,7 @@ void shift_arr(char *t)
 }
 
 //function to sum time array
-uint16_t time_sum (char *t)
+uint16_t time_sum (unsigned char *t)
 {
 	uint16_t sum = 0;
 	sum = (*(t) - 48)*600 + (*(t+1) - 48)*60 + (*(t+3) - 48)*10 + (*(t+4) - 48);
