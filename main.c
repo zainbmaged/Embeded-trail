@@ -91,15 +91,16 @@ unsigned char cooking_status = 0;
     case StandBy_Time:  
    //StandBy_Time case code 
 	
-	KeyPad_vInit();
 	unsigned char new_input = 0;
 	uint16_t sum = 0;
-	char msg[] = {"Cooking time?"};
-	char *m;
+	unsigned char msg[] = {"Cooking time?"};
+	unsigned char time[];
+	unsigned char *m;
+	unsigned char *t;
+	m = msg;
+	t = time;
 	LCD_Vsend_String(m);
 	generic_Delay(3000);
-	char time[];
-	char *t;
 	LCD_Vsend_String(t);
 	for(i=0 ;i<4 ;i++)
 	{
