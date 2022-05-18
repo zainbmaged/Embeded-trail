@@ -1,1 +1,34 @@
+void pauseCooking(void)
+{
+	
+ 
+	// blink leds 
+
+	 while (readSW1()==0)
+	 {
+		 void port_init (F);
+		 GPIO_PORTF_DATA_R=GPIO_PORTF_DATA_R ^0x0E;
+	   generic_delay(1000);
+	   systick_wait(80000); 
+	 } //blink leds
+			
+	
+  if (readSW2() == 0 && readSW3() == 1 )   //sw2 is clicked and door is closed 
+		{state =  Cooking;}
+	
+	
+  else if (readSW1() ==0)  //clicked 2nd time
+	
+		{state = IDLE ; }
+	
+  else 
+	 {
+		 void port_init (F);
+		 GPIO_PORTF_DATA_R=GPIO_PORTF_DATA_R ^0x0E;
+	   generic_delay(1000);
+	   systick_wait(80000);
+   }
+	
+
+}
 
