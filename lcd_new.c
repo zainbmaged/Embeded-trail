@@ -131,3 +131,4 @@ void LCD_CLR_Screen(void){
 	LCD4bits_Cmd(0x01);
   
 }
+
