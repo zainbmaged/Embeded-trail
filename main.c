@@ -1,4 +1,3 @@
-
 #include "tm4c123gh6pm.h"
 #include "drivers_headers.h"
 #include "stdint.h"
@@ -16,10 +15,11 @@ enum state {IDLE, Cooking, PauseCooking, CompleteCooking};
 //variable
 int state = IDLE;		// variable state to select next state intialized to start at IDLE
 unsigned char cooking_status = 0; 
-unsigned char weight=0;
+unsigned char weight;
 unsigned int  weight_time;
  unsigned char msg_Beef[] = "Beef weight?";
 unsigned  char msg_Chicken[] = "Chicken weight?";
+unsigned char msg_input []="Enter:A/B/C/D";
 unsigned char new_input = 0;
 uint16_t sum = 0;
  unsigned char msg[] = "Cooking time?";
@@ -64,16 +64,19 @@ while(1){
   	//Led_Array_Off();
  		Buzzer_Off();
 		 
-	 	 
-     
+	 	  LCD_Vsend_String(msg_input);
+			 delayMs(3000);
+     LCD_CLR_Screen();
 			 
 		 while (1){
+			
+			 
 	   	 input = KEYPAD_u8Read();  
        delayMs(500);
 		  
 			 if(input == 'A'){
 		   LCD_Vsend_String(pop);
-			 delayMs(1000); 
+			 delayMs(3000); 
 			 LCD_CLR_Screen();
 			 time[1] = '1'; 
     	 state = Cooking;
@@ -106,10 +109,16 @@ while(1){
 	case Beef:  
 		  LCD_CLR_Screen();
 		  LCD_Vsend_String(msg_Beef);
+	    delayMs(3000);	
+
 	    while(1){
-				
-		  weight = KEYPAD_u8Read();
-	    delayMs(500);
+			
+		  	weight=	KEYPAD_u8Read();
+	    //delayMs(500);
+		  	LCD_CLR_Screen();
+				LCD4bits_Data(KEYPAD_u8Read());
+				delayMs(3000);
+					  LCD_CLR_Screen();
 				if(weight !=0){
 				break;
 				}
@@ -133,10 +142,14 @@ while(1){
 	case Chicken:  
 		  LCD_CLR_Screen();
 		  LCD_Vsend_String(msg_Chicken);
-	
+	    delayMs(3000);	
 	  while(1){
-		  weight = KEYPAD_u8Read();
-	    delayMs(500);
+		 	weight=	KEYPAD_u8Read();
+	    //delayMs(500);
+		  	LCD_CLR_Screen();
+				LCD4bits_Data(KEYPAD_u8Read());
+				delayMs(3000);
+					  LCD_CLR_Screen();
 		   if(weight != 0){
 				break;
      	}
@@ -196,7 +209,7 @@ while(1){
 		  
     case Cooking:
 		
-	if(readSW3() == 0){ // need to be changed to sw2
+	if(readSW2() == 0){ // need to be changed to sw2
 	while(1){
 	//print current time
 		
@@ -240,11 +253,15 @@ while(1){
 		}
 		delayMs(1000);
     if (readSW1() ==0 || readSW3() == 0) //if sw1 is clicked or the door is open goe to pauseCooking  
-	  { 
-	   if( pauseCooking () ==0)
-     {state = Cooking; }
-	   else
-     state = IDLE;
+	  {  
+		 if( pauseCooking () == '1')
+			 {state = Cooking;
+          break;			 }
+	  if  ( pauseCooking () == '0')
+		{state = IDLE;
+		break;}
+	
+    
 	 } 
 		
 	}
@@ -270,5 +287,3 @@ while(1){
   }
 		
  }
-
-
