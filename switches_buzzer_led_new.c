@@ -13,11 +13,11 @@ void Switch_Init(){
 }
 
 unsigned char readSW1(){
-	return DIO_u8READ_PIN('F' ,0);
+	return DIO_u8READ_PIN('F' ,4);
 }
 
 unsigned char readSW2(){
-	return DIO_u8READ_PIN('F' ,4);
+	return DIO_u8READ_PIN('F' ,0);
 }
 
 unsigned char readSW3(){
